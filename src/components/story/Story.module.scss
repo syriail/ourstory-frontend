@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.storyCardContainer{
+    margin-bottom: $spacer;
+    padding-bottom: $spacer;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+em{
+    background-color: lightgray
+}
+
+.resultContainer{
+    background-color: white;
+    padding: $spacer;
+    border: 1px;
+    border-style: solid;
+    border-color: lightgray;
+}
+
+.facetContainer{
+    background-color: white;
+    padding: $spacer *2;
+    border: 1px;
+    border-style: solid;
+    border-color: lightgray;
+    margin-bottom: $spacer;
+    
+}
+.facetCheck{
+    margin: $spacer;
+}
