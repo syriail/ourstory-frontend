@@ -13,7 +13,8 @@ const StoryCard: React.FunctionComponent<{story: Story, tags: Tags}> = ({story, 
         if(['objectID', 'collectionId' ,'storyTitle', 'collectionName', 'storyType'].includes(attribute) ) return null
         //First check if the attribute is a tag
         let label = tags[attribute]
-        if(!label) t(`label_${attribute}`)
+
+        if(!label) label = t(`label_${attribute}`)
         return (
             <Row>
                     <Col sm={3}>{label}</Col>
