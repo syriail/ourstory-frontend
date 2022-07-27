@@ -2,7 +2,6 @@ import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
 import Container from "react-bootstrap/Container"
 import NavDropdown from "react-bootstrap/NavDropdown"
-import { Button } from "react-bootstrap"
 import {useTranslation} from 'react-i18next'
 import classes from './Layout.module.scss'
 import { useNavigate } from "react-router"
@@ -39,10 +38,10 @@ const OurStoryNavbar: React.FunctionComponent = () => {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item onClick={()=> changeLanguage('ar')}>
-                    Arbaic
+                    {t('language_switcher_ar')}
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={()=> changeLanguage('en')}>
-                    English
+                  {t('language_switcher_en')}
                   </NavDropdown.Item>
               </NavDropdown>
               <Nav.Item>
@@ -51,11 +50,7 @@ const OurStoryNavbar: React.FunctionComponent = () => {
           </Nav>
           
           
-          <Nav.Item>
-            <Button variant="dark" onClick={logout}>
-            {t('button_logout')}
-            </Button>
-          </Nav.Item>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

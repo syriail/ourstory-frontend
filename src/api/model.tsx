@@ -1,4 +1,21 @@
 export type Tags = Record<string, string>
+type TagValue = {
+    storyId: string,
+    collectionId: string,
+    locale: string,
+    slug: string,
+    name: string,
+    value: string,
+}
+export enum MediaFormat {
+    AUDIO = 'AUDIO',
+    VIDEO = 'VIDEO',
+    IMAGE = 'IMAGE',
+  }
+export type MediaFile = {
+    format: MediaFormat,
+    mediaPath: string
+  }
 export type Story = {
     objectID: string,
     collectionId:string,
@@ -12,7 +29,9 @@ export type Story = {
     storyTellerGender?: string,
     storyTellerPlaceOfOrigin?: string,
     storyTellerResidency?:string,
-    storyTellerAge?: number
+    storyTellerAge?: number,
+    mediaFiles?:MediaFile[],
+    tags?: TagValue[]
 }
 export type Facet = {
     attribute: string,

@@ -48,3 +48,17 @@
   border: 0;
   padding: 0;
 }
+
+.footer {
+  min-height: 426px;
+  padding-top: 45px;
+  background-color: $light;
+}
+.footerInnerWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

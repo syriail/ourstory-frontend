@@ -47,6 +47,33 @@ export const getTags = async(locale: string):Promise<Tags> =>{
     })
 }
 
+export const getStoryDetails = (storyId: string, locale: string):Promise<Story>=>{
+    return new Promise((resolve, reject)=>{
+        Axios.get(`${endpoint}/stories/details/${storyId}?locale=${locale}`)
+        .then((response)=>{
+            if(response.status === 200){
+                resolve(response.data)
+            }else{
+                reject('')
+            }
+        })
+        .catch(error=> reject(error))
+    })
+}
+export const getMediaDownloadUrl = (path: string):Promise<string>=>{
+    return new Promise((resolve, reject)=>{
+        Axios.get(`${endpoint}/downloadUrl?path=${path}`)
+        .then((response)=>{
+            if(response.status === 200){
+                resolve(response.data)
+            }else{
+                reject('')
+            }
+        })
+        .catch(error=> reject(error))
+    })
+}
+
 const pareseTags = (tagsList: {slug: string, name: string}[]): Tags=>{
     let tags: Tags = {}
     for(const tagItem of tagsList){
