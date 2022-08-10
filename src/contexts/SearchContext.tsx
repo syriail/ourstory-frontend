@@ -10,6 +10,8 @@ export enum SearchStatus {
 
 }
 
+const defaultPageSize = 20
+
 export interface ISearch {
   stories: Story[]
   tags: Tags
@@ -33,7 +35,7 @@ const defaultState: ISearch = {
   searchStatus: SearchStatus.IDLE,
   facets:[],
   pageNumber: 0,
-  pageSize: 20,
+  pageSize: defaultPageSize,
   total: 0,
   numberOfPages: 0
 }
@@ -57,14 +59,14 @@ const SearchProvider = ({ children }: Props) => {
   const [numberOfPages, setNumberOfPages] = useState(0)
   const {i18n} = useTranslation()
 
-  const pageSize = 20
+  const pageSize = defaultPageSize
 
   useEffect(()=>{
     loadTags()
   }, [])
 
   useEffect(()=>{
-      doSearch()
+      doSearch(0)
   }, [queryText])
 
   const loadTags = async()=>{
@@ -77,13 +79,14 @@ const SearchProvider = ({ children }: Props) => {
       setQueryText(query)
   }
 
-  const doSearch = async()=>{
+  const doSearch = async(pageNumber: number)=>{
       
       setSearchStatus(SearchStatus.LOADING)
+      console.log(`Do search pageNumber: ${pageNumber}`)
       search(i18n.language, queryText, pageSize, pageNumber, facetsFilterMap)
           .then((result)=>{
               console.log('Stories')
-              console.log(result.stories)
+              console.log(result)
               setStories(result.stories)
               setTotal(result.total)
               setPageNumber(result.page)
@@ -108,7 +111,7 @@ const SearchProvider = ({ children }: Props) => {
     if(!isFacetValueSelected(attribute, value)){
         setFaceFilterArray([...facetFilterArray, `${attribute}:${value}`])
     }
-    doSearch()
+    doSearch(0)
   }
 
   const removeFacetFilter = (attribute: string, value: string)=>{
@@ -122,7 +125,7 @@ const SearchProvider = ({ children }: Props) => {
     setFacetsFilterMap(newFacetsFilterMap)
     const newFilterArray = facetFilterArray.filter(e=> e !== `${attribute}:${value}`)
     setFaceFilterArray(newFilterArray)
-    doSearch()
+    doSearch(0)
 
   }
   const isFacetValueSelected = (attribute: string, value: string):boolean =>{
@@ -131,14 +134,12 @@ const SearchProvider = ({ children }: Props) => {
 
   const nextPage = ()=>{
     if(pageNumber < numberOfPages){
-        setPageNumber(pageNumber + 1)
-        doSearch()
+        doSearch(pageNumber + 1)
     }
   }
   const prevPage = ()=>{
     if(pageNumber > 0){
-        setPageNumber(pageNumber - 1)
-        doSearch()
+        doSearch(pageNumber - 1)
     }
   }
 

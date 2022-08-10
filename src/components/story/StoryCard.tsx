@@ -10,6 +10,7 @@ const StoryCard: React.FunctionComponent<{story: Story, tags: Tags}> = ({story, 
         navigate(`/story/${story.objectID}`)
     }
     const renderAttributesWithMatch = (attribute: string, value: any)=>{
+        //Execlude main attributes since they are displayed anyway
         if(['objectID', 'collectionId' ,'storyTitle', 'collectionName', 'storyType'].includes(attribute) ) return null
         //First check if the attribute is a tag
         let label = tags[attribute]

@@ -11,6 +11,7 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/react-router-dom": "^5.3.3",
+    "@vlsergey/react-bootstrap-pagination": "^3.2.1",
     "algoliasearch": "^4.14.0",
     "amazon-cognito-identity-js": "^5.2.9",
     "auth0-js": "^9.19.0",
