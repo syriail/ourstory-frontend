@@ -33,7 +33,7 @@ const StoryCard: React.FunctionComponent<{story: Story, tags: Tags}> = ({story, 
                 <Col sm={3}>{t('label_storyType')}</Col>
                 <Col sm={9}>
                     {story.storyType.map((type, index)=>(
-                        <span key={index}>{t(type)}, </span>
+                        <span key={index}>{t(type)} - </span>
                     ))}
                 </Col>
             </Row>

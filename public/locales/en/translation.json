@@ -39,5 +39,6 @@
     "label_mediaFiles": "Media",
     "button_search": "Search",
     "button_logout": "Log Out",
-    "button_show": "Show"
+    "button_show": "Show",
+    "button_close": "Close"
 }
