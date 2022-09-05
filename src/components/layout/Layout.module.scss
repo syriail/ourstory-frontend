@@ -9,6 +9,7 @@
 }
 .navItem{
   min-width: 100px;
+  
 }
 .searchWrapper {
   display: inline-block;
@@ -52,7 +53,7 @@
 .footer {
   min-height: 426px;
   padding-top: 45px;
-  background-color: $light;
+  background-color: $secondary
 }
 .footerInnerWrapper {
   max-width: 1200px;

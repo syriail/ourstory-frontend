@@ -7,11 +7,10 @@ import classes from './Layout.module.scss'
 import { useNavigate } from "react-router"
 import SearchBox from "./SearchBox"
 
-const OurStoryNavbar: React.FunctionComponent = () => {
 
+const OurStoryNavbar: React.FunctionComponent<{pages: any[]}> = ({pages}) => {
   const {t, i18n}  = useTranslation()
   const navigate = useNavigate()
-
     const logout = () => {
     navigate('/')
   }
@@ -19,18 +18,30 @@ const OurStoryNavbar: React.FunctionComponent = () => {
     i18n.changeLanguage(locale)
   }
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="white" variant="light" expand="lg">
       <Container>
-        <Navbar.Brand className={classes.navItem} href="/">{t('app_name')}</Navbar.Brand>
+        <Navbar.Brand className={classes.navItem} href="/">
+          <img
+            alt={t('app_name')}
+            src={require("../../styles/images/logo.jpg")}
+            width="60"
+            height="60"
+          />
+          
+          </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <div className={classes.searchWrapper}>
             <SearchBox />
           </div>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className='flex-grow-1'>
-            <Nav.Link className={classes.navItem} href="/collections">
-              {t('label_about')}
+            {pages.map((page, index)=>(
+              <Nav.Link key={index} className={classes.navItem} href={`/page/${page.slug}`}>
+              {page.name}
             </Nav.Link>
+            ))}
+            
             
             <NavDropdown
               className={classes.navItem}

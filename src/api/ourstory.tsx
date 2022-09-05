@@ -161,3 +161,30 @@ const parseFacets = (facetHits?: Record<string, Record<string, number>>): Facet[
     }
     return facets
 }
+
+export const getPages = (locale: string):Promise<any[]>=>{
+    return new Promise((resolve, reject)=>{
+        Axios.get(`${endpoint}/staticPages/${locale}`)
+        .then((response)=>{
+            if(response.status === 200){
+                resolve(response.data)
+            }else{
+                reject([])
+            }
+        })
+        .catch(error=> reject(error))
+    })
+}
+export const getPageContent = (slug: string, locale: string):Promise<string>=>{
+    return new Promise((resolve, reject)=>{
+        Axios.get(`${endpoint}/page/content/${slug}/${locale}`)
+        .then((response)=>{
+            if(response.status === 200){
+                resolve(response.data)
+            }else{
+                reject('')
+            }
+        })
+        .catch(error=> reject(error))
+    })
+}
