@@ -41,23 +41,6 @@ const OurStoryNavbar: React.FunctionComponent<{pages: any[]}> = ({pages}) => {
               {page.name}
             </Nav.Link>
             ))}
-            
-            
-            <NavDropdown
-              className={classes.navItem}
-                title={t('label_language')}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item onClick={()=> changeLanguage('ar')}>
-                    {t('language_switcher_ar')}
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={()=> changeLanguage('en')}>
-                  {t('language_switcher_en')}
-                  </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Item>
-          
-          </Nav.Item>
           </Nav>
           
           
@@ -71,3 +54,17 @@ const OurStoryNavbar: React.FunctionComponent<{pages: any[]}> = ({pages}) => {
 
 
 export default OurStoryNavbar
+/*
+<NavDropdown
+              className={classes.navItem}
+                title={t('label_language')}
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item onClick={()=> changeLanguage('ar')}>
+                    {t('language_switcher_ar')}
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={()=> changeLanguage('en')}>
+                  {t('language_switcher_en')}
+                  </NavDropdown.Item>
+              </NavDropdown>
+*/
