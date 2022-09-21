@@ -67,10 +67,11 @@ const SearchProvider = ({ children }: Props) => {
 
   useEffect(()=>{
       doSearch(0)
-  }, [queryText])
+  }, [queryText, i18n.language])
 
   const loadTags = async()=>{
-    getTags(i18n.language)
+    const lang = localStorage.getItem('ourstorylang') || i18n.language
+    getTags(lang)
     .then(result=> setTags(result))
     .catch(error=>console.log(error))
   }
@@ -80,13 +81,10 @@ const SearchProvider = ({ children }: Props) => {
   }
 
   const doSearch = async(pageNumber: number)=>{
-      
+    const lang = localStorage.getItem('ourstorylang') || i18n.language
       setSearchStatus(SearchStatus.LOADING)
-      console.log(`Do search pageNumber: ${pageNumber}`)
-      search(i18n.language, queryText, pageSize, pageNumber, facetsFilterMap)
+      search(lang, queryText, pageSize, pageNumber, facetsFilterMap)
           .then((result)=>{
-              console.log('Stories')
-              console.log(result)
               setStories(result.stories)
               setTotal(result.total)
               setPageNumber(result.page)

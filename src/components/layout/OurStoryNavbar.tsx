@@ -14,13 +14,16 @@ const OurStoryNavbar: React.FunctionComponent<{pages: any[]}> = ({pages}) => {
     const logout = () => {
     navigate('/')
   }
-  const changeLanguage = (locale: string)=>{
+  const languageSelected = (locale: string)=>{
     i18n.changeLanguage(locale)
+  }
+  const navigateToPage = (slug: string)=>{
+    navigate(`/page/${slug}`)
   }
   return (
     <Navbar bg="white" variant="light" expand="lg">
       <Container>
-        <Navbar.Brand className={classes.navItem} href="/">
+        <Navbar.Brand className={classes.navItem} onClick={()=>navigate('/')}>
           <img
             alt={t('app_name')}
             src={require("../../styles/images/logo.jpg")}
@@ -37,13 +40,11 @@ const OurStoryNavbar: React.FunctionComponent<{pages: any[]}> = ({pages}) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className='flex-grow-1'>
             {pages.map((page, index)=>(
-              <Nav.Link key={index} className={classes.navItem} href={`/page/${page.slug}`}>
+              <Nav.Item key={index} className={classes.navItem} onClick={()=>navigateToPage(page.slug)}>
               {page.name}
-            </Nav.Link>
+            </Nav.Item>
             ))}
           </Nav>
-          
-          
           
         </Navbar.Collapse>
       </Container>

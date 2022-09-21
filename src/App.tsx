@@ -7,16 +7,24 @@ import SearchProvider from './contexts/SearchContext';
 
 function App() {
   const {i18n}  = useTranslation()
-
   useEffect(()=>{
-    if (i18n.language === "ar") {
+    let lang = localStorage.getItem('ourstorylang');
+    if(lang){
+      console.log('coolie lang', lang)
+      i18n.changeLanguage(lang)
+    }else{
+      lang = i18n.language
+      localStorage.setItem('ourstorylang', lang);
+    }
+    if (lang === "ar") {
       document.body.style.direction = "rtl"
       document.body.dir = "rtl"
     } else {
       document.body.style.direction = "ltr"
       document.body.dir = "ltr"
     }
-  }, [i18n.language])
+  },[])
+
   
 
   return (

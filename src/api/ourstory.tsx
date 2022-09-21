@@ -25,8 +25,6 @@ export const search = async(locale: string, text: string, pageSize: number, page
     return new Promise((resolve, reject)=>{
         algoliaIndex.search(text, {facets:['*'], facetFilters: facetFilters, page: pageNumber, hitsPerPage: pageSize})
             .then((result: SearchResponse<any>)=>{
-                console.log('Raw result of search')
-                console.log(result)
                 resolve(parseSearchResults(result))
             })
             .catch(error=> reject(error))

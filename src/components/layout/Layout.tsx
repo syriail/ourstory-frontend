@@ -16,8 +16,10 @@ const Layout: React.FunctionComponent<any> = (props:any) => {
   useEffect(()=>{
     loadPages()
   }, [])
+
   const loadPages = async()=>{
-    getPages(i18n.language)
+    const lang = localStorage.getItem('ourstorylang')
+    getPages(lang || i18n.language)
     .then(pages => {
       const toNav = []
       const toFooter = []
