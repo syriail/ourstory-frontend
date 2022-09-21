@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router";
 
 //Temporal language component since we don't want to make language change available on nav bar
